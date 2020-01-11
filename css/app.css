@@ -14,7 +14,6 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
     border: 0;
-    font-family: 'Open Sans', sans-serif;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
@@ -32,6 +31,46 @@ time, mark, audio, video {
     --caution: #f77f00;
     --burning: #d62828;
     /* default padding */
-    --main-padding: 0.5rem;
+    --main-padding: 0.75rem;
 }
 
+/* GLOBAL SETTINGS */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+.container-fluid {
+    padding: var(--main-padding);
+}
+h1 {
+    font-size: 1.4rem;
+    margin-top: 0.2rem;
+}
+h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+/* NAVBAR AND NAVIGATION */
+
+nav {
+    padding: var(--main-padding);
+    background-color: var(--slate);
+    display: flex;
+    flex-grow: 2;
+    color: var(--pure-white);
+    text-transform: uppercase;
+}
+#app-title {
+    text-align: center;
+}
+#logo {
+    flex-grow: 1;
+    font-size: 1.75rem;
+}
+#info {
+    flex-grow: 1;
+    text-align: right;
+    font-size: 1.75rem;
+}
