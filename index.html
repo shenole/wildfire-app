@@ -40,21 +40,26 @@
             <div id="weather-readouts">
                 <div class="weather-indicator">
                     <i class="fas fa-thermometer-three-quarters"></i>
+                    <p class="display-text" id="temp-text">112 <span class="tiny-text">&#176;F</span></p>
                 </div>
-                <div class="weather-indicator">
+                <div class="weather-indicator" id="middle-weather-indicator">
                     <i class="fas fa-smog"></i>
+                    <p class="display-text" id="humi-text">100%</p>
                 </div>
                 <div class="weather-indicator">
                     <i class="fas fa-wind"></i>
-                </div>
-                <div class="weather-indicator">
-                    <i class="fas fa-tint"></i>
+                    <p class="display-text" id="temp-text">112 <span class="tiny-text">MPH</span></p>
+                    </p>
                 </div>
             </div>
         </section>
         <section id="index">
             <h2>Wildfire Index</h2>
-            <div id="message"></div>
+            <div id="index-display">
+                <div id="index-bar"></div>
+                <div id="index-level">4<span class="tiny-text" id="out-of">/4</span></div>
+            </div>
+            <div id="message">The risk of a wild fire in your area is extreme.</div>
         </section>
     </div>
 </body>

@@ -30,6 +30,7 @@ time, mark, audio, video {
     --solar: #fcbf49;
     --caution: #f77f00;
     --burning: #d62828;
+    --mist: #99ccff;
     /* default padding */
     --main-padding: 0.75rem;
 }
@@ -78,6 +79,7 @@ nav {
     flex-grow: 1;
     text-align: right;
     font-size: 1.75rem;
+    color: var(--mist);
 }
 
 /* FORM STYLING */
@@ -108,7 +110,58 @@ nav {
 }
 #map {
     width: 100%;
-    height: 166px;
+    height: 150px;
     background-color: var(--snow);
     margin-top: var(--main-padding);
+}
+
+/* LOCAL WEATHER SECTION */
+
+#weather-readouts {
+    display: flex;
+    justify-content: space-between;
+}
+.weather-indicator {
+    display: flex;
+    font-size: 1.5rem;
+    color: var(--mist);
+}
+#middle-weather-indicator {
+    text-align: center;
+}
+.display-text {
+    color: var(--slate);
+    margin-left: 0.3rem;
+    font-size: 1.8rem;
+}
+.tiny-text {
+    font-size: 0.8rem;
+}
+
+/* WILDFIRE INDEX */
+
+#index-display {
+    display: flex;
+}
+#index-bar {
+    flex-grow: 3;
+    padding: 0.5rem 0rem;
+    background: rgb(234,226,183);
+    background: linear-gradient(90deg, rgba(234,226,183,1) 0%, rgba(252,191,73,1) 25%, rgba(247,127,0,1) 50%, rgba(214,40,40,1) 75%);
+}
+#index-level {
+    padding-left: 0.4rem;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 0.9rem;
+}
+#out-of {
+    font-weight: 400;
+}
+#message {
+    background-color: var(--snow);
+    padding: 0.5rem 0rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    text-align: center;
 }
