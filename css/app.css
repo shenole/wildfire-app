@@ -41,7 +41,11 @@ body {
     font-size: 16px;
 }
 .container-fluid {
-    padding: var(--main-padding);
+    padding: 0rem var(--main-padding) 0rem var(--main-padding);
+}
+section {
+    box-sizing: border-box;
+    padding: var(--main-padding) 0rem 0rem 0rem;
 }
 h1 {
     font-size: 1.4rem;
@@ -50,6 +54,7 @@ h1 {
 h2 {
     font-size: 1.3rem;
     font-weight: 800;
+    margin-bottom: 0.5rem;
 }
 
 /* NAVBAR AND NAVIGATION */
@@ -73,4 +78,37 @@ nav {
     flex-grow: 1;
     text-align: right;
     font-size: 1.75rem;
+}
+
+/* FORM STYLING */
+
+.form-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.4rem;
+    background-color: var(--snow);
+    border: 0;
+}
+.btn {
+    box-sizing: border-box;
+    border: 0;
+    padding: 0.6rem 2rem;
+    color: var(--pure-white);
+    margin-top: 1.25rem;
+}
+#form-controls {
+    display: flex;
+    justify-content: space-between;
+}
+#submit-btn {
+    background-color: #489b06;
+}
+#reset-btn {
+    background-color: var(--burning);
+}
+#map {
+    width: 100%;
+    height: 166px;
+    background-color: var(--snow);
+    margin-top: var(--main-padding);
 }

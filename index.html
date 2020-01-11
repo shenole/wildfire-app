@@ -23,7 +23,16 @@
     <div class="container-fluid">
         <section id="location">
             <h2>Enter Location</h2>
-            <form action=""></form>
+            <form action="" id="location-form" method="">
+                <label for="latitude">Latitude</label>
+                <input type="number" class="form-input" id="latitude">
+                <label for="longitude">Longitude</label>
+                <input type="number" class="form-input" id="longitude">
+                <div id="form-controls">
+                    <input type="submit" class="btn" id="submit-btn" value="Submit">
+                    <input type="reset" class="btn" id="reset-btn">
+                </div>
+            </form>
             <div id="map"></div>
         </section>
         <section id="weather">
