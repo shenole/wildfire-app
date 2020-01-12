@@ -59,6 +59,12 @@ h2 {
     font-weight: 800;
     margin-bottom: 0.5rem;
 }
+a.credit-text {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: var(--pure-white);
+    text-decoration: none;
+}
 
 /* LOGO ANIMATION */
 

@@ -1,4 +1,7 @@
+// MAP FUNCTIONALITY
+
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhcnA5bWVkaWEiLCJhIjoiY2s1YTl0bTVqMGc2djNucGRxdmxuYzRuNiJ9.-5J7mOB7O3RM-lAC3CoLog';
+
 let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
@@ -56,6 +59,35 @@ let updateMap = () => {
             }
         );
     });
+    return newLat, newLong;
+}
+
+// WEATHER FUNCTIONALITY
+
+// axios.get('https://api.darksky.net/forecast/d48c2f5ad2130bcf021e25e4772ca2dd/', {
+//     params: {
+//         long: long.value,
+//         lat: lat.value
+//     }
+// })
+//     .then(function (response) {
+//         console.log(response);
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     })
+//     .finally(function () {
+//         // always executed
+//     });
+
+let getData = () => {
+    axios({
+        method: 'get',
+        url: 'https://api.darksky.net/forecast/d48c2f5ad2130bcf021e25e4772ca2dd/40.8682,-73.4257'
+        // url: 'https://jsonplaceholder.typicode.com/todos'
+    })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 }
 
 // CLICK SUBMIT BUTTON LOADS NEW LOCATION, UPDATES WEATHER, AND PROVIDES INDEX VALUES
@@ -63,6 +95,7 @@ let updateMap = () => {
 let submitForm = (e) => {
     e.preventDefault();
     updateMap();
+    getData();
 }
 
 document.querySelector('#submit-btn').addEventListener('click', submitForm);
