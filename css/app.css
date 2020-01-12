@@ -30,7 +30,6 @@ time, mark, audio, video {
     --solar: #fcbf49;
     --caution: #f77f00;
     --burning: #d62828;
-    --mist: #99ccff;
     /* default padding */
     --main-padding: 0.75rem;
 }
@@ -40,9 +39,12 @@ time, mark, audio, video {
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+    background: rgb(234,226,183);
+    background: linear-gradient(180deg, rgba(234,226,183,1) 0%, rgba(252,191,73,1) 31%, rgba(247,127,0,1) 60%, rgba(214,40,40,1) 84%);
+    min-height: 100vh;
 }
 .container-fluid {
-    padding: 0rem var(--main-padding) 0rem var(--main-padding);
+    padding: 0rem var(--main-padding) var(--main-padding) var(--main-padding);
 }
 section {
     box-sizing: border-box;
@@ -56,6 +58,21 @@ h2 {
     font-size: 1.3rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
+}
+
+/* LOGO ANIMATION */
+
+#logo {
+    animation-name: fire;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes fire {
+    0% {color: var(--pale-yellow);}
+    25% {color: var(--solar);}
+    50% {color: var(--caution);}
+    75% {color: var(--burning);}
 }
 
 /* NAVBAR AND NAVIGATION */
@@ -124,13 +141,13 @@ nav {
 .weather-indicator {
     display: flex;
     font-size: 1.5rem;
-    color: var(--mist);
+    color: var(--pure-white);
 }
 #middle-weather-indicator {
     text-align: center;
 }
 .display-text {
-    color: var(--slate);
+    color: var(--pure-white);
     margin-left: 0.3rem;
     font-size: 1.8rem;
 }
@@ -148,12 +165,16 @@ nav {
     padding: 0.5rem 0rem;
     background: rgb(234,226,183);
     background: linear-gradient(90deg, rgba(234,226,183,1) 0%, rgba(252,191,73,1) 25%, rgba(247,127,0,1) 50%, rgba(214,40,40,1) 75%);
+    box-shadow: 14px 2px 28px -1px rgba(0,0,0,0.64);
+-webkit-box-shadow: 14px 2px 28px -1px rgba(0,0,0,0.64);
+-moz-box-shadow: 14px 2px 28px -1px rgba(0,0,0,0.64);
 }
 #index-level {
     padding-left: 0.4rem;
     font-size: 2rem;
     font-weight: 800;
     line-height: 0.9rem;
+    color: var(--pure-white);
 }
 #out-of {
     font-weight: 400;
@@ -162,6 +183,6 @@ nav {
     background-color: var(--snow);
     padding: 0.5rem 0rem;
     margin-top: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     text-align: center;
 }
