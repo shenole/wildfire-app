@@ -73,17 +73,35 @@ let getData = () => {
     let weatherLong = long.value;
 
     axios.get(`https://api.weatherbit.io/v2.0/current?&lat=${weatherLat}&lon=${weatherLong}&key=4c652e8ed709497d8dcdf94d980bb425`)
-        .then(res => console.log(res.data))
+        .then(res => updateWeather(res))
         .catch(err => console.log(err));
+}
 
-    console.log(res.temp);
+let celciusToFahrenheit = (a) => {
+    let tempConversion = (a * 9 / 5) + 32;
+    return Math.round(tempConversion);
+}
+
+let kphToMph = (a) => {
+    let mph = Math.round(a) / 1.609;
+    return Math.round(mph);
 }
 
 let updateWeather = (res) => {
-    // temperature.innerHTML = JSON.parse(res).data.temp;
-    // humidity.innerHTML = `${res.data}`;
-    // wind.innerHTML = `${res.data}`;
+    let weatherData = res.data.data[0];
+
+    temperature.innerHTML = celciusToFahrenheit(Math.round(weatherData.temp));
+    humidity.innerHTML = weatherData.rh + `%`;
+    wind.innerHTML = kphToMph(Math.round(weatherData.wind_spd));
 }
+
+// WILDFIRE INDEX 
+
+let tempScore = weatherData.temp;
+let humScore = weatherData.rh;
+let windScore = weatherData.wind_spd;
+
+
 
 // CLICK SUBMIT BUTTON LOADS NEW LOCATION, UPDATES WEATHER, AND PROVIDES INDEX VALUES
 
