@@ -64,30 +64,25 @@ let updateMap = () => {
 
 // WEATHER FUNCTIONALITY
 
-// axios.get('https://api.darksky.net/forecast/d48c2f5ad2130bcf021e25e4772ca2dd/', {
-//     params: {
-//         long: long.value,
-//         lat: lat.value
-//     }
-// })
-//     .then(function (response) {
-//         console.log(response);
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     })
-//     .finally(function () {
-//         // always executed
-//     });
+let temperature = document.querySelector('#temp-text');
+let humidity = document.querySelector('#humi-text');
+let wind = document.querySelector('#wind-text');
 
 let getData = () => {
-    axios({
-        method: 'get',
-        url: 'https://api.darksky.net/forecast/d48c2f5ad2130bcf021e25e4772ca2dd/40.8682,-73.4257'
-        // url: 'https://jsonplaceholder.typicode.com/todos'
-    })
-        .then(res => console.log(res))
+    let weatherLat = lat.value;
+    let weatherLong = long.value;
+
+    axios.get(`https://api.weatherbit.io/v2.0/current?&lat=${weatherLat}&lon=${weatherLong}&key=4c652e8ed709497d8dcdf94d980bb425`)
+        .then(res => console.log(res.data))
         .catch(err => console.log(err));
+
+    console.log(res.temp);
+}
+
+let updateWeather = (res) => {
+    // temperature.innerHTML = JSON.parse(res).data.temp;
+    // humidity.innerHTML = `${res.data}`;
+    // wind.innerHTML = `${res.data}`;
 }
 
 // CLICK SUBMIT BUTTON LOADS NEW LOCATION, UPDATES WEATHER, AND PROVIDES INDEX VALUES
