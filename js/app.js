@@ -1,12 +1,21 @@
 // MAP FUNCTIONALITY
 
-// mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhcnA5bWVkaWEiLCJhIjoiY2s1YTl0bTVqMGc2djNucGRxdmxuYzRuNiJ9.-5J7mOB7O3RM-lAC3CoLog';
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhcnA5bWVkaWEiLCJhIjoiY2s1YTl0bTVqMGc2djNucGRxdmxuYzRuNiJ9.-5J7mOB7O3RM-lAC3CoLog';
 
 let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
     center: [-103.59179687498357, 40.66995747013945],
     zoom: 1
+});
+
+// INFO BUTTON FUNCTIONALITY
+
+let infoSlide = document.querySelector('#overlay');
+let infoButton = document.querySelector('#info-icon');
+
+infoButton.addEventListener('click', function () {
+    infoSlide.classList.toggle('overlay-transition');
 });
 
 // GLOBAL VARIABLES
@@ -67,17 +76,18 @@ let updateMap = () => {
 let temperature = document.querySelector('#temp-text');
 let humidity = document.querySelector('#humi-text');
 let wind = document.querySelector('#wind-text');
+let indexBar = document.querySelector('#index-bar');
 let indexLevel = document.querySelector('#index-num');
 let msg = document.querySelector('#message');
 
-// let getData = () => {
-//     let weatherLat = lat.value;
-//     let weatherLong = long.value;
+let getData = () => {
+    let weatherLat = lat.value;
+    let weatherLong = long.value;
 
-//     axios.get(`https://api.weatherbit.io/v2.0/current?&lat=${weatherLat}&lon=${weatherLong}&key=4c652e8ed709497d8dcdf94d980bb425`)
-//         .then(res => updateWeather(res))
-//         .catch(err => console.log(err));
-// }
+    axios.get(`https://api.weatherbit.io/v2.0/current?&lat=${weatherLat}&lon=${weatherLong}&key=4c652e8ed709497d8dcdf94d980bb425`)
+        .then(res => updateWeather(res))
+        .catch(err => console.log(err));
+}
 
 let celciusToFahrenheit = (a) => {
     let tempConversion = (a * 9 / 5) + 32;
@@ -155,15 +165,19 @@ let updateWeather = (res) => {
         if (x + y + z <= 149) {
             msg.innerHTML = "The risk of a wildfire in your area is low.";
             indexLevel.innerHTML = "1";
+            indexBar.classList = 'index-bar-75';
         } else if (x + y + z <= 224 && x + y + z > 149) {
             msg.innerHTML = "The risk of a wildfire in your area is moderate.";
             indexLevel.innerHTML = "2";
+            indexBar.classList = 'index-bar-50';
         } else if (x + y + z <= 274 && x + y + z > 224) {
             msg.innerHTML = "The risk of a wildfire in your area is high.";
             indexLevel.innerHTML = "3";
+            indexBar.classList = 'index-bar-25';
         } else {
             msg.innerHTML = "The risk of a wildfire in your area is extreme.";
             indexLevel.innerHTML = "4";
+            indexBar.classList = 'index-bar-0';
         }
     }
 
@@ -196,6 +210,7 @@ let resetForm = (e) => {
     temperature.innerHTML = "--- ";
     humidity.innerHTML = "---";
     wind.innerHTML = "--- ";
+    indexBar.classList.remove('index-bar-0', 'index-bar-25', 'index-bar-50', 'index-bar-75');
     indexLevel.innerHTML = "0";
     msg.innerHTML = "Enter location to calculate the wildfire index."
 }

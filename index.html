@@ -20,18 +20,23 @@
         <div id="app-title">
             <h1>wildfire predictor</h1>
         </div>
-        <div id="info"><i class="fas fa-info-circle"></i></div>
+        <div id="info"><i class="fas fa-info-circle" id="info-icon"></i></div>
     </nav>
     <div class="container-fluid">
         <div id="overlay">
             <div id="info">
                 <p><strong>DISCLAIMER</strong> - This application was built as a proof of concept ONLY. It is not meant
-                    for use as an official means of predicting the likelihood of a wildfire occuring at any given
-                    location.</p>
+                    for use as an official means of predicting the actual likelihood of a wildfire.</p>
                 <h3>How This Application Works</h3>
-                <p>By taking in the geographic coordinates that the user enters, the Wildfire Predictor uses a
-                    combination of the location and key weather data to determin what the possibility of a wildfire is
-                    for the user's selected area.</p>
+                <p>By taking in geographic coordinates the user enters, the Wildfire Predictor uses a combination of
+                    location and key weather data to determine the likelihood of a wildfire in the user's selected area.
+                </p>
+                <p class="give-margin">First enter latitude and longitude coordinates. The coordinates should be in the
+                    decimal format, such
+                    as the following example for Huntington, New York (40.8682, -73.4257). Click "submit" and the app
+                    will use the displayed weather data to calculate the threat level for a wildfire in that area. Click
+                    on "reset" to clear results or start over.</p>
+
             </div>
         </div>
         <section id="location">
@@ -69,8 +74,11 @@
         <section id="index">
             <h2>&bull; Wildfire Index</h2>
             <div id="index-display">
-                <div id="index-bar"></div>
-                <div id="index-space"><span id="index-num">0</span><span class="tiny-text" id="out-of">/4</span></div>
+                <div id="index-bar-div">
+                    <div id="index-bar"></div>
+                </div>
+                <div id="index-space"><span id="index-num">0</span><span class="tiny-text" id="out-of">/4</span>
+                </div>
             </div>
             <div id="message">Enter location to calculate the wildfire index.</div>
         </section>
