@@ -30,6 +30,7 @@ time, mark, audio, video {
     --solar: #fcbf49;
     --caution: #f77f00;
     --burning: #d62828;
+    --burning-overlay: rgba(214, 40, 40, 0.9);
     /* default padding */
     --main-padding: 0.75rem;
 }
@@ -43,8 +44,27 @@ body {
     background: linear-gradient(180deg, rgba(234,226,183,1) 0%, rgba(252,191,73,1) 31%, rgba(247,127,0,1) 60%, rgba(214,40,40,1) 84%);
     min-height: 100vh;
 }
+#overlay {
+    position: fixed;
+    z-index: 100;
+    background-color: var(--burning-overlay);
+    height: 100%;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    margin-top: 62px;
+    padding: 2.25rem 1.75rem;
+}
+#info p {
+    text-align: left;
+    font-size: 1rem;
+    color: var(--pure-white);
+    
+}
 .container-fluid {
+    position: relative;
     padding: 0rem var(--main-padding) var(--main-padding) var(--main-padding);
+    z-index: 0;
 }
 section {
     box-sizing: border-box;
@@ -58,6 +78,14 @@ h2 {
     font-size: 1.3rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
+}
+h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--pure-white);
+    text-align: left;
+    margin-top: 1.75rem;
+    margin-bottom: 1rem;
 }
 a.credit-text {
     font-size: 0.6rem;

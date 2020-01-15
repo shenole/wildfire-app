@@ -1,6 +1,6 @@
 // MAP FUNCTIONALITY
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhcnA5bWVkaWEiLCJhIjoiY2s1YTl0bTVqMGc2djNucGRxdmxuYzRuNiJ9.-5J7mOB7O3RM-lAC3CoLog';
+// mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhcnA5bWVkaWEiLCJhIjoiY2s1YTl0bTVqMGc2djNucGRxdmxuYzRuNiJ9.-5J7mOB7O3RM-lAC3CoLog';
 
 let map = new mapboxgl.Map({
     container: 'map',
@@ -70,14 +70,14 @@ let wind = document.querySelector('#wind-text');
 let indexLevel = document.querySelector('#index-num');
 let msg = document.querySelector('#message');
 
-let getData = () => {
-    let weatherLat = lat.value;
-    let weatherLong = long.value;
+// let getData = () => {
+//     let weatherLat = lat.value;
+//     let weatherLong = long.value;
 
-    axios.get(`https://api.weatherbit.io/v2.0/current?&lat=${weatherLat}&lon=${weatherLong}&key=4c652e8ed709497d8dcdf94d980bb425`)
-        .then(res => updateWeather(res))
-        .catch(err => console.log(err));
-}
+//     axios.get(`https://api.weatherbit.io/v2.0/current?&lat=${weatherLat}&lon=${weatherLong}&key=4c652e8ed709497d8dcdf94d980bb425`)
+//         .then(res => updateWeather(res))
+//         .catch(err => console.log(err));
+// }
 
 let celciusToFahrenheit = (a) => {
     let tempConversion = (a * 9 / 5) + 32;
