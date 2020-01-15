@@ -175,15 +175,18 @@ nav {
 -webkit-box-shadow: 14px 2px 28px -1px rgba(0,0,0,0.64);
 -moz-box-shadow: 14px 2px 28px -1px rgba(0,0,0,0.64);
 }
-#index-level {
+#index-space {
     padding-left: 0.4rem;
+}
+#index-num {
     font-size: 2rem;
     font-weight: 800;
-    line-height: 0.9rem;
+    line-height: 1.5rem;
     color: var(--pure-white);
 }
 #out-of {
     font-weight: 400;
+    color: var(--pure-white);
 }
 #message {
     background-color: var(--snow);

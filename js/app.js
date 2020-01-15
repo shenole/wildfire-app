@@ -67,6 +67,8 @@ let updateMap = () => {
 let temperature = document.querySelector('#temp-text');
 let humidity = document.querySelector('#humi-text');
 let wind = document.querySelector('#wind-text');
+let indexLevel = document.querySelector('#index-num');
+let msg = document.querySelector('#message');
 
 let getData = () => {
     let weatherLat = lat.value;
@@ -89,18 +91,84 @@ let kphToMph = (a) => {
 
 let updateWeather = (res) => {
     let weatherData = res.data.data[0];
+    let tempData = Math.round(weatherData.temp);
+    let humData = weatherData.rh;
+    let windData = Math.round(weatherData.wind_spd);
 
-    temperature.innerHTML = celciusToFahrenheit(Math.round(weatherData.temp));
-    humidity.innerHTML = weatherData.rh + `%`;
-    wind.innerHTML = kphToMph(Math.round(weatherData.wind_spd));
+    temperature.innerHTML = celciusToFahrenheit(tempData);
+    humidity.innerHTML = humData + `%`;
+    wind.innerHTML = kphToMph(windData);
+
+    // WILDFIRE INDEX 
+
+    let convertedTemp = celciusToFahrenheit(tempData);
+
+    let calculateTempScore = (t) => {
+        if (t < 77) {
+            return 25;
+        } else if (t < 91 && t > 77) {
+            msg.innerHTML = "The risk of a wildfire in your area is moderate.";
+            return 50;
+        } else if (t < 99 && t > 91) {
+            msg.innerHTML = "The risk of a wildfire in your area is high.";
+            return 75;
+        } else {
+            msg.innerHTML = "The risk of a wildfire in your area is extreme.";
+            return 100;
+        }
+    };
+
+    let tempScore = calculateTempScore(convertedTemp);
+    console.log(tempScore);
+
+    let calculateHumScore = (h) => {
+        if (h < 13) {
+            return 100;
+        } else if (h < 29 && h > 12) {
+            return 75;
+        } else if (h < 65 && h > 28) {
+            return 50;
+        } else {
+            return 25;
+        }
+    };
+
+    let humScore = calculateHumScore(humData);
+    console.log(humScore);
+
+    let calculateWindScore = (w) => {
+        if (w < 6) {
+            return 25;
+        } else if (w < 13 && w > 5) {
+            return 50;
+        } else if (w < 36 && w > 12) {
+            return 75;
+        } else {
+            return 100;
+        }
+    }
+
+    let windScore = calculateWindScore(windData);
+    console.log(windScore);
+
+    let calculateWildfireIndex = (x, y, z) => {
+        if (x + y + z <= 149) {
+            msg.innerHTML = "The risk of a wildfire in your area is low.";
+            indexLevel.innerHTML = "1";
+        } else if (x + y + z <= 224 && x + y + z > 149) {
+            msg.innerHTML = "The risk of a wildfire in your area is moderate.";
+            indexLevel.innerHTML = "2";
+        } else if (x + y + z <= 274 && x + y + z > 224) {
+            msg.innerHTML = "The risk of a wildfire in your area is high.";
+            indexLevel.innerHTML = "3";
+        } else {
+            msg.innerHTML = "The risk of a wildfire in your area is extreme.";
+            indexLevel.innerHTML = "4";
+        }
+    }
+
+    calculateWildfireIndex(tempScore, humScore, windScore);
 }
-
-// WILDFIRE INDEX 
-
-let tempScore = weatherData.temp;
-let humScore = weatherData.rh;
-let windScore = weatherData.wind_spd;
-
 
 
 // CLICK SUBMIT BUTTON LOADS NEW LOCATION, UPDATES WEATHER, AND PROVIDES INDEX VALUES
@@ -124,6 +192,12 @@ let resetForm = (e) => {
         center: [-103.59179687498357, 40.66995747013945],
         zoom: 1
     });
+
+    temperature.innerHTML = "--- ";
+    humidity.innerHTML = "---";
+    wind.innerHTML = "--- ";
+    indexLevel.innerHTML = "0";
+    msg.innerHTML = "Enter location to calculate the wildfire index."
 }
 
 document.querySelector('#reset-btn').addEventListener('click', resetForm);
