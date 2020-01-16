@@ -1,6 +1,6 @@
 // MAP FUNCTIONALITY
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhcnA5bWVkaWEiLCJhIjoiY2s1YTl0bTVqMGc2djNucGRxdmxuYzRuNiJ9.-5J7mOB7O3RM-lAC3CoLog';
+// mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhcnA5bWVkaWEiLCJhIjoiY2s1YTl0bTVqMGc2djNucGRxdmxuYzRuNiJ9.-5J7mOB7O3RM-lAC3CoLog';
 
 let map = new mapboxgl.Map({
     container: 'map',
@@ -129,7 +129,6 @@ let updateWeather = (res) => {
     };
 
     let tempScore = calculateTempScore(convertedTemp);
-    console.log(tempScore);
 
     let calculateHumScore = (h) => {
         if (h < 13) {
@@ -144,7 +143,6 @@ let updateWeather = (res) => {
     };
 
     let humScore = calculateHumScore(humData);
-    console.log(humScore);
 
     let calculateWindScore = (w) => {
         if (w < 6) {
@@ -159,7 +157,6 @@ let updateWeather = (res) => {
     }
 
     let windScore = calculateWindScore(windData);
-    console.log(windScore);
 
     let calculateWildfireIndex = (x, y, z) => {
         if (x + y + z <= 149) {
